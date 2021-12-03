@@ -27,7 +27,7 @@ public class App {
         jogadores.add(j2);
 
         for (Jogador j:jogadores){
-            System.out.println(j.getNome()+" / "+jogadores.get(i).getNome());
+            //System.out.println(j.getNome()+" / "+jogadores.get(i).getNome());
             if(j.getNome()=="Helena"){
                 jogadores.get(i).novoPersonagem(p3);
             }
