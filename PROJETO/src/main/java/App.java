@@ -11,20 +11,20 @@ public class App {
         Jogador auxJ;
         Mago auxM;
         Guerreiro auxG;
+        Arquivo arquivo = new Arquivo();
 
 
-        //declaracao de 1 jogador e 2 personagens para tteste
+        jogadores= arquivo.ler();
 
-        Jogador j1 = new Jogador("Pedro","1234567890",20,"pedro@gmail.com");
-        Jogador j2 = new Jogador("Helena","121112223334534567890",26,"helena@gmail.com");
         Mago p1 = new Mago("Valdor","bola de fogo");
         Guerreiro p2 = new Guerreiro("Luzon","adaga");
         Guerreiro p3 = new Guerreiro("Valkyr","Espada");
-        j1.novoPersonagem(p1);
-        j1.novoPersonagem(p2);
 
-        jogadores.add(j1);
-        jogadores.add(j2);
+        //j1.novoPersonagem(p1);
+        //j1.novoPersonagem(p2);
+        System.out.println(jogadores.size());
+        //jogadores.add(j1);
+        //jogadores.add(j2);
 
         for (Jogador j:jogadores){
             //System.out.println(j.getNome()+" / "+jogadores.get(i).getNome());
@@ -33,32 +33,75 @@ public class App {
             }
             i++;
         }
+
         //chamada do menu de opçoes
 
         System.out.println("Menu Principal");
-        System.out.println("1- Inserir Jogador");
-        System.out.println("2- Criar Personagem");
-        System.out.println("3- Mostrar Personagens");
-        System.out.println("4- Açao Personagem");
-        System.out.println("5- Remover Jogador");
-        System.out.println("6- Sair");
-        System.out.println("------------------------");
+        System.out.println("1- Jogadores / 2- Criar Personagem / 3- Mostrar Personagens / 4- Açao Personagem");
+        System.out.println("-------------------------------------------------------------------------------------");
         int acao =input.nextInt();
 
         do{
             if(acao==1) {
-                System.out.println("nome");
-                input.nextLine();
-                nome = input.nextLine();
-                System.out.println("cpf");
-                cpf = input.nextLine();
-                System.out.println("idade");
-                idade = input.nextInt();
-                System.out.println("email");
-                input.nextLine();
-                email = input.nextLine();
-                auxJ = new Jogador(nome, cpf, idade, email);
-                jogadores.add(auxJ);
+                System.out.println("1- Adicionar Jogador / 2- Remover Jogador / 3- Atualizar Dados / 4- Mostrar Jogadores");
+                int acaoAux =input.nextInt();
+
+                if(acaoAux==1){
+                    System.out.println("Qual o nome do novo jogador?");
+                    input.nextLine();
+                    nome = input.nextLine();
+                    System.out.println("cpf");
+                    cpf = input.nextLine();
+                    System.out.println("idade");
+                    idade = input.nextInt();
+                    System.out.println("email");
+                    input.nextLine();
+                    email = input.nextLine();
+                    auxJ = new Jogador(nome, cpf, idade, email);
+                    jogadores.add(auxJ);
+                    arquivo.escrever(auxJ);
+                }
+                if(acaoAux==2){
+                    i=0;
+                    for (Jogador j : jogadores) {
+                        System.out.println(i+"- "+j.getNome());
+                        i++;
+                    }
+                    System.out.println("Selecione o numero do jogador a remover");
+                    i=input.nextInt();
+                    jogadores.remove(i);
+                }
+                if(acaoAux==3){
+                    i=0;
+                    for (Jogador j : jogadores) {
+                        System.out.println(i+"- "+j.getNome());
+                        i++;
+                    }
+                    System.out.println("Selecione o numero do jogador a atualizar");
+                    i=input.nextInt();
+                    System.out.println("Qual o novo nome do jogador?");
+                    input.nextLine();
+                    nome = input.nextLine();
+                    System.out.println("cpf");
+                    cpf = input.nextLine();
+                    System.out.println("idade");
+                    idade = input.nextInt();
+                    System.out.println("email");
+                    input.nextLine();
+                    email = input.nextLine();
+
+                    jogadores.get(i).setCpf(cpf);
+                    jogadores.get(i).setNome(nome);
+                    jogadores.get(i).setIdade(idade);
+                    jogadores.get(i).setEmail(email);
+
+                }
+                if(acaoAux==4){
+                    for (Jogador j : jogadores) {
+                        System.out.println(j.getNome()+" / "+j.getIdade()+" anos /  contato: "+j.getEmail());
+                    }
+                }
+
             }
             if(acao==2) {
                 i=0;
@@ -124,21 +167,13 @@ public class App {
                     }
                 }
             }
-            if(acao==5) {
-                i=0;
-                System.out.println("Qual jogador voce deseja remover do grupo?");
-                input.nextLine();
-                nomeJ = input.nextLine();
-                for (Jogador j : jogadores) {
-                    if(j.getNome().equals(nomeJ)){
-                        jogadores.remove(i);
-                    }
-                    i++;
-                }
-            }
-            System.out.println("Menu Principal...");
+
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("Menu Principal");
+            System.out.println("1- Jogadores / 2- Criar Personagem / 3- Mostrar Personagens / 4- Açao Personagem");
+            System.out.println("-------------------------------------------------------------------------------------");
             acao = input.nextInt();
-        }while(acao<6 && acao>0);
+        }while(acao<5 && acao>0);
 
 
 

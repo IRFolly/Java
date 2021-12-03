@@ -7,12 +7,18 @@ public class Jogador {
     private String email;
     public ArrayList<Personagem> personagens = new ArrayList<>();
 
+
+    public Jogador() {
+    }
+
     public Jogador(String nome, String cpf, int idade, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
         this.email = email;
     }
+
+
 
     void novoPersonagem(Personagem p){
         personagens.add(p);

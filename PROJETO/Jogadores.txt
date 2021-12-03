@@ -1,0 +1,15 @@
+Jogador
+Pedro
+1234567890
+20
+pedro@gmail.com
+Jogador
+Helena
+11122233345
+19
+helena@gmail.com
+Jogador
+Iuri
+111
+29
+iurifolly
