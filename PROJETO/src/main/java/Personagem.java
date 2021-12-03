@@ -6,24 +6,34 @@ public class Personagem {
     protected int level;
     protected int max_vida;
     protected int ouro;
-    protected Jogador jogador;
 
     public Personagem() {
+    }
+
+    void atacar(){
+
     }
 
     void recuperarVida(){
         vida=vida+10;
         if(vida>max_vida) vida=max_vida;
+        System.out.println(nome+" está com "+vida+" de vida");
     }
 
     void tomarDano(int dano){
         vida=vida-dano;
         if (vida<0) vida=0;
+        if(vida==0){
+            System.out.println(nome+" tomou dano demais, use uma poção para revive-lo");
+        }else {
+            System.out.println(nome + " tomou " + dano + " de dano e está com " + vida + " de vida");
+        }
     }
     void aumentarNivel(){
         level++;
         max_vida=max_vida*level;
         vida=max_vida;
+        System.out.println("Parabéns, "+nome+" foi para o nível "+level);
     }
 
     void addOuro(int ouro){
@@ -56,9 +66,6 @@ public class Personagem {
     }
     public int getOuro() {
         return ouro;
-    }
-    public Jogador getJogador() {
-        return jogador;
     }
 
 }
