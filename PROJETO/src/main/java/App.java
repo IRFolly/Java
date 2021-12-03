@@ -40,7 +40,8 @@ public class App {
         System.out.println("2- Criar Personagem");
         System.out.println("3- Mostrar Personagens");
         System.out.println("4- Açao Personagem");
-        System.out.println("5- Sair");
+        System.out.println("5- Remover Jogador");
+        System.out.println("6- Sair");
         System.out.println("------------------------");
         int acao =input.nextInt();
 
@@ -123,9 +124,21 @@ public class App {
                     }
                 }
             }
+            if(acao==5) {
+                i=0;
+                System.out.println("Qual jogador voce deseja remover do grupo?");
+                input.nextLine();
+                nomeJ = input.nextLine();
+                for (Jogador j : jogadores) {
+                    if(j.getNome().equals(nomeJ)){
+                        jogadores.remove(i);
+                    }
+                    i++;
+                }
+            }
             System.out.println("Menu Principal...");
             acao = input.nextInt();
-        }while(acao<5 && acao>0);
+        }while(acao<6 && acao>0);
 
 
 
